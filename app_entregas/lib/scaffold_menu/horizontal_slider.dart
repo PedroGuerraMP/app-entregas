@@ -15,9 +15,10 @@ class HorizontalSlider extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             itemCount: items.length,
             itemBuilder: (BuildContext context, int index) {
-              return  Container(
-                padding: const EdgeInsets.all(8),
-                // color: Colors.amber[colorCodes[index]],
+              return  TextButton(
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0))),
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -31,20 +32,20 @@ class HorizontalSlider extends StatelessWidget {
                             child: Image.asset( height: 50, 'assets/img/prato-0.jpg', ),
                           ),
                         ),
-                        Text(style: const TextStyle(fontSize: 14),textAlign: TextAlign.start,
+                        Text(style: const TextStyle(fontSize: 14, color: Colors.black87),textAlign: TextAlign.start,
                           titulos[index]
                         ),
-                        Text(style: const TextStyle(fontSize: 12), textAlign: TextAlign.start,
+                        Text(style: const TextStyle(fontSize: 12, color: Colors.black54), textAlign: TextAlign.start,
                           items[index]
                         ),
                       ],
                     ),
-                    Text(style: const TextStyle(fontSize: 12), textAlign: TextAlign.start,
+                    Text(style: const TextStyle(fontSize: 12, color: Colors.black87), textAlign: TextAlign.start,
                       preco
                     ),
                   ],
-                )
-              );
+                ), 
+              onPressed: (){},);
             }
           );
   }
