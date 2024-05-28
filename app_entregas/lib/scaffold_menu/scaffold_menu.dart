@@ -7,7 +7,9 @@ import 'package:app_entregas/scaffold_menu/vertical_slider.dart';
 import 'package:app_entregas/scaffold_menu/horizontal_slider.dart';
 
 class ScaffoldMenu extends StatelessWidget {
-  const ScaffoldMenu({super.key});
+  const ScaffoldMenu(this.itemDetailOnClick, {super.key});
+
+  final void Function() itemDetailOnClick;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class ScaffoldMenu extends StatelessWidget {
                       height: 20,
                       child: Text('DESTAQUES', textAlign: TextAlign.center),
                     ),
-                    Expanded(child: HorizontalSlider()),
+                    Expanded(child: HorizontalSlider(itemDetailOnClick)),
                   ],
                 )
               ),

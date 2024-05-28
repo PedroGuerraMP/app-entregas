@@ -6,13 +6,33 @@ void main() {
   runApp(const MainApp());
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends StatefulWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: ScaffoldMenu(), 
-    );
+  State<MainApp> createState() => _MainMenuState();
+}
+
+class _MainMenuState extends State<MainApp> {
+  Widget activeScreen = const Scaffold();
+
+@override
+  void initState() {
+    super.initState();
+    activeScreen = ScaffoldMenu(itemDetailSwitchState);
+
   }
+
+  void itemDetailSwitchState() {
+    setState(() {
+      activeScreen = const Scaffold();
+    });
+  }
+
+   @override
+    Widget build(BuildContext context) {
+      return MaterialApp(
+        home: activeScreen, 
+      );
+    }
 }
