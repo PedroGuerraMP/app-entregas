@@ -1,3 +1,4 @@
+import 'package:app_entregas/models/item.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_entregas/main_menu.dart';
@@ -6,10 +7,20 @@ import 'package:app_entregas/scaffold_menu/category_header.dart';
 import 'package:app_entregas/scaffold_menu/vertical_slider.dart';
 import 'package:app_entregas/scaffold_menu/horizontal_slider.dart';
 
-class ScaffoldMenu extends StatelessWidget {
-  const ScaffoldMenu(this.itemDetailOnClick, {super.key});
+class ScaffoldMenu extends StatefulWidget {
+
+  ScaffoldMenu(this.itemDetailOnClick, {super.key});
 
   final void Function() itemDetailOnClick;
+
+  List<Item> listaItemsSelecao = listaItems;
+  
+  @override
+  State<StatefulWidget> createState() => _CategoryHeaderState();
+
+}
+
+class _CategoryHeaderState extends State<ScaffoldMenu> {
 
   @override
   Widget build(BuildContext context) {
@@ -42,18 +53,18 @@ class ScaffoldMenu extends StatelessWidget {
                       height: 20,
                       child: Text('DESTAQUES', textAlign: TextAlign.center),
                     ),
-                    Expanded(child: HorizontalSlider(itemDetailOnClick)),
+                    Expanded(child: HorizontalSlider(widget.itemDetailOnClick)),
                   ],
                 )
               ),
               const Divider(),
               SizedBox(
                 height: 40,
-                child: CategoryHeader(listaItems.map((e) => e.categoria).toSet().toList())
+                child: CategoryHeader(listaItems.map((e) => e.categoria).toSet().toList(), reordenaLista)
               ),
               SizedBox(
                 height: 350,
-                child: VerticalSlider(listaItems, itemDetailOnClick),
+                child: VerticalSlider( widget.listaItemsSelecao, widget.itemDetailOnClick),
               ),
               const SizedBox(
                 height: 50,
@@ -62,5 +73,19 @@ class ScaffoldMenu extends StatelessWidget {
             ],
           )
         );
+  }
+
+  void reordenaLista(String? categoria){
+      widget.listaItemsSelecao = List.from(listaItems);
+    if(categoria != null){
+    
+      int start = widget.listaItemsSelecao.indexOf(widget.listaItemsSelecao.firstWhere((e) => e.categoria == categoria));
+      int end = widget.listaItemsSelecao.indexOf(widget.listaItemsSelecao.lastWhere((e) => e.categoria == categoria));
+      List<Item> categoriaSelecionada = List.from(widget.listaItemsSelecao.getRange(start, end));
+
+      widget.listaItemsSelecao.removeRange(start, end);
+      widget.listaItemsSelecao.insertAll(0, categoriaSelecionada);
+    }
+    setState(() {});
   }
 }
