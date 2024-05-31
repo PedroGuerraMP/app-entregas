@@ -1,4 +1,5 @@
 import 'package:app_entregas/scaffold_menu/scaffold_menu.dart';
+import 'package:app_entregas/item_detail/item_detail.dart';
 
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,13 @@ class _MainMenuState extends State<MainApp> {
 
   void itemDetailSwitchState() {
     setState(() {
-      activeScreen = const Scaffold();
+      activeScreen = ItemDetail(scaffoldMenuOnClick);
+    });
+  }
+
+  void scaffoldMenuOnClick(){
+    setState(() {
+      activeScreen = ScaffoldMenu(itemDetailSwitchState);
     });
   }
 
