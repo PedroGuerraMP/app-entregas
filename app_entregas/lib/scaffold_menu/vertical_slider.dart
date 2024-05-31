@@ -4,8 +4,9 @@ import 'package:app_entregas/models/item.dart';
 class VerticalSlider extends StatelessWidget {
   
   final List<Item> items; 
-  
-  const VerticalSlider(this.items, {super.key});
+  final void Function() itemDetailOnClick;
+
+  const VerticalSlider(this.items, this.itemDetailOnClick, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +15,8 @@ class VerticalSlider extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
           itemCount: items.length,
           itemBuilder: (BuildContext context, int index) {
-              return Column(
+            return Column(
                 children: [
-
                   Row(
                     children: [
                       (index == 0 || items[index].categoria != items[index-1].categoria) ? 
@@ -27,7 +27,9 @@ class VerticalSlider extends StatelessWidget {
                         const SizedBox(height: 4,),
                     ]
                   ),
-                  Row(
+                TextButton(
+                  onPressed: (){itemDetailOnClick();}, 
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -53,7 +55,8 @@ class VerticalSlider extends StatelessWidget {
                       )
                     ],
                   )
-                ]
+                )
+              ]
             );
           }
         );

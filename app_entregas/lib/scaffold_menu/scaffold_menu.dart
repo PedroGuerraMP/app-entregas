@@ -51,9 +51,9 @@ class ScaffoldMenu extends StatelessWidget {
                 height: 40,
                 child: CategoryHeader(listaItems.map((e) => e.categoria).toSet().toList())
               ),
-              const SizedBox(
+              SizedBox(
                 height: 350,
-                child: VerticalSlider(listaItems),
+                child: VerticalSlider(listaItems, itemDetailOnClick),
               ),
               const SizedBox(
                 height: 50,
