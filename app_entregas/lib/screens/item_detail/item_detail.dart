@@ -1,11 +1,12 @@
-import 'package:app_entregas/item_detail/item_detail_info.dart';
+import 'package:app_entregas/screens/item_detail/item_detail_info.dart';
 import 'package:flutter/material.dart';
-import 'package:app_entregas/item_detail/detail_button_row.dart';
+import 'package:app_entregas/screens/item_detail/detail_button_row.dart';
 
 class ItemDetail extends StatefulWidget {
-  ItemDetail(this.scaffoldMenuOnClick, {super.key});
+  ItemDetail(this.redirectToScaffoldMenu,this.redirectToCartDetail, {super.key});
 
-  final void Function() scaffoldMenuOnClick;
+  final void Function() redirectToScaffoldMenu;
+  final void Function() redirectToCartDetail;
   
   int numberItems = 0;
 
@@ -18,7 +19,7 @@ class _ItemDetailState extends State<ItemDetail>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: DetailButtonRow(),
+      bottomNavigationBar: DetailButtonRow(widget.redirectToCartDetail),
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: ConstrainedBox(
@@ -31,7 +32,7 @@ class _ItemDetailState extends State<ItemDetail>{
               children: <Widget>[
                 Column(
                   children: [
-                    DetailItemInfo(widget.scaffoldMenuOnClick),
+                    DetailItemInfo(widget.redirectToScaffoldMenu),
                     const Divider(),
                     const Align(
                       alignment: Alignment.topLeft,

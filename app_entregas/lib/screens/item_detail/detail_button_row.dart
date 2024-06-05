@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class DetailButtonRow extends StatefulWidget {
+  const DetailButtonRow(this.redirectToCartDetail, {super.key});
+
   @override
   State<StatefulWidget> createState() => _DetailButtonRowState();
-  int numberItems = 0;
+  
+    final void Function() redirectToCartDetail;
 }
 
 class _DetailButtonRowState extends State<DetailButtonRow> {
@@ -18,9 +21,8 @@ class _DetailButtonRowState extends State<DetailButtonRow> {
   }
 
   void increment(bool positive) {
-    int newValue = int.parse(_controllerSelectedItems.value.text);
-
     if (int.tryParse(_controllerSelectedItems.value.text)! > 0) {
+      var newValue = int.parse(_controllerSelectedItems.value.text);
       positive ? newValue++ : newValue--;
       _controllerSelectedItems.value = TextEditingValue(text: newValue.toString());
     }
@@ -31,16 +33,14 @@ class _DetailButtonRowState extends State<DetailButtonRow> {
   }
 
   void add(){
-    int bagValue = int.parse(_controllerBag.value.text);
-    int addedValues = int.parse(_controllerSelectedItems.value.text);
-
     if (int.tryParse(_controllerSelectedItems.value.text)! > 0) {
+      var bagValue = int.parse(_controllerBag.value.text);
+      var addedValues = int.parse(_controllerSelectedItems.value.text);
       _controllerBag.value = TextEditingValue(text: (bagValue + addedValues).toString());
     }
     else {
       _controllerSelectedItems.value = const TextEditingValue(text: "1");
     }
-
     setState(() {});
   }
 
@@ -112,7 +112,7 @@ class _DetailButtonRowState extends State<DetailButtonRow> {
                     Icons.shopping_bag_rounded,
                     color: Colors.white,
                   ),
-                  onPressed: () => {},
+                  onPressed: () => {widget.redirectToCartDetail()},
                 ),
                 Card(
                   color: Colors.redAccent,

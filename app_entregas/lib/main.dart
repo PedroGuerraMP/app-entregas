@@ -1,5 +1,6 @@
-import 'package:app_entregas/scaffold_menu/scaffold_menu.dart';
-import 'package:app_entregas/item_detail/item_detail.dart';
+import 'package:app_entregas/screens/cart_detail/cart_detail.dart';
+import 'package:app_entregas/screens/scaffold_menu/scaffold_menu.dart';
+import 'package:app_entregas/screens/item_detail/item_detail.dart';
 
 import 'package:flutter/material.dart';
 
@@ -20,19 +21,24 @@ class _MainMenuState extends State<MainApp> {
 @override
   void initState() {
     super.initState();
-    activeScreen = ScaffoldMenu(itemDetailSwitchState);
-
+    setStateScaffoldMenu();
   }
 
-  void itemDetailSwitchState() {
+  void setStateScaffoldMenu(){
     setState(() {
-      activeScreen = ItemDetail(scaffoldMenuOnClick);
+      activeScreen = ScaffoldMenu(setStateItemDetail);
     });
   }
 
-  void scaffoldMenuOnClick(){
+  void setStateItemDetail() {
     setState(() {
-      activeScreen = ScaffoldMenu(itemDetailSwitchState);
+      activeScreen = ItemDetail(setStateScaffoldMenu, setStateCartDetail);
+    });
+  }
+
+  void setStateCartDetail(){
+    setState(() {
+      activeScreen = CartDetail();
     });
   }
 
