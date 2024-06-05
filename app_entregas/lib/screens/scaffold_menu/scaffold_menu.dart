@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:app_entregas/main_menu.dart';
 import 'package:app_entregas/data/items.dart';
-import 'package:app_entregas/scaffold_menu/category_header.dart';
-import 'package:app_entregas/scaffold_menu/vertical_slider.dart';
-import 'package:app_entregas/scaffold_menu/horizontal_slider.dart';
+import 'package:app_entregas/screens/scaffold_menu/category_header.dart';
+import 'package:app_entregas/screens/scaffold_menu/vertical_slider.dart';
+import 'package:app_entregas/screens/scaffold_menu/horizontal_slider.dart';
 
 class ScaffoldMenu extends StatefulWidget {
 

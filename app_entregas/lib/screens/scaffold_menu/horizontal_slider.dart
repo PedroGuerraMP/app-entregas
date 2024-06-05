@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HorizontalSlider extends StatelessWidget {
-  HorizontalSlider(this.itemDetailOnClick, {super.key});
-  final void Function() itemDetailOnClick;
+  HorizontalSlider(this.redirectToItemDetail, {super.key});
+  final void Function() redirectToItemDetail;
   final List<String> titulos = <String>['TIT 1','TITULO 2','TITULO 3','TITULO 4','TITULO  5'];
   final List<String> items = <String>['ITEM 1','ITEM 2','ITEM 3','ITEM 4','ITEM 5'];
   final String preco = '20,00';
@@ -45,7 +45,7 @@ class HorizontalSlider extends StatelessWidget {
                     ),
                   ],
                 ), 
-              onPressed: (){itemDetailOnClick();},);
+              onPressed: (){redirectToItemDetail();},);
             }
           );
   }
