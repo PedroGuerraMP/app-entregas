@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:app_entregas/models/item.dart';
 
-class VerticalSlider extends StatelessWidget {
+class CartVerticalSlider extends StatelessWidget {
   
   final List<Item> items; 
   final void Function() itemDetailOnClick;
 
-  const VerticalSlider(this.items, this.itemDetailOnClick, {super.key});
+  const CartVerticalSlider(this.items, this.itemDetailOnClick, {super.key});
 
   @override
   Widget build(BuildContext context) {
