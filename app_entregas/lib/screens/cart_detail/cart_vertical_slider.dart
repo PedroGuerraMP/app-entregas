@@ -17,16 +17,6 @@ class CartVerticalSlider extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Column(
                 children: [
-                  Row(
-                    children: [
-                      (index == 0 || items[index].categoria != items[index-1].categoria) ? 
-                        Column(children: [
-                          const Divider(),
-                          Text(items[index].categoria)
-                        ]) : 
-                        const SizedBox(height: 4,),
-                    ]
-                  ),
                 TextButton(
                   onPressed: (){itemDetailOnClick();}, 
                   child: Row(
