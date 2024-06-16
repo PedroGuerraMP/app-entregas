@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class CreateAccount extends StatelessWidget {
   
-  Login(this.menuOnClick, this.createAccountOnClick, {super.key});
+  CreateAccount(this.menuOnClick, this.loginOnClick, {super.key});
   
   final _formKey = GlobalKey<FormState>();
   
-  final void Function() createAccountOnClick;
   final void Function() menuOnClick;
+  final void Function() loginOnClick;
   
   @override
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar( title: const SizedBox(height: 200,),),
+      appBar: AppBar( 
+        
+        title: const SizedBox(height: 200,),
+      ),
       bottomNavigationBar: BottomAppBar(
         child: TextButton(
           child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Não tem conta? ', style: TextStyle(fontSize: 14)),
-              Text(' Crie uma aqui! ', style: TextStyle(fontSize: 14, color: Colors.purple)),
+              Text('Já tem uma conta? ', style: TextStyle(fontSize: 14)),
+              Text(' Faça Login! ', style: TextStyle(fontSize: 14, color: Colors.purple)),
             ],
           ),
-          onPressed: () {
-            createAccountOnClick();
-          },
+          onPressed: () {},
         ),
       ),
       body: SingleChildScrollView(
@@ -40,21 +41,35 @@ class Login extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset( 'assets/img/login.webp', ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width/2,
-                  child: const Text("login", style: TextStyle(color: Colors.black54)),
+                  child: const Text("nome", style: TextStyle(color: Colors.black54)),
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width/2,
                   child: TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Login inválido';
-                    }
-                    return null;
-                  },
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Nome inválido';
+                      }
+                      return null;
+                    },
+                  ),
                 ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width/2,
+                  child: const Text("email", style: TextStyle(color: Colors.black54)),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width/2,
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Login inválido';
+                      }
+                      return null;
+                    },
+                  ),
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width/2,
@@ -73,20 +88,21 @@ class Login extends StatelessWidget {
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width*0.7,
+                  height: 100,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       TextButton(
                       style: TextButton.styleFrom(
-                        alignment: Alignment.centerRight,
+                        alignment: Alignment.bottomRight,
                         backgroundColor: Colors.purple,
                         foregroundColor: Colors.white
                       ),
                       child: const Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text("Login"),
-                          Icon(Icons.arrow_forward)
+                          Text("Criar Conta"),
+                          Icon(Icons.add)
                         ],
                       ),
                     onPressed: () {
