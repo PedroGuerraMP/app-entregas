@@ -13,10 +13,6 @@ class CreateAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: AppBar( 
-        
-        title: const SizedBox(height: 200,),
-      ),
       bottomNavigationBar: BottomAppBar(
         child: TextButton(
           child: const Row(
@@ -26,7 +22,7 @@ class CreateAccount extends StatelessWidget {
               Text(' Faça Login! ', style: TextStyle(fontSize: 14, color: Colors.purple)),
             ],
           ),
-          onPressed: () {},
+          onPressed: () {loginOnClick();},
         ),
       ),
       body: SingleChildScrollView(
@@ -41,6 +37,25 @@ class CreateAccount extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width*0.7,
+                      height: 200,
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                          'Cadastro '
+                        ),
+                      )
+                    )
+                  ],
+                ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width/2,
                   child: const Text("nome", style: TextStyle(color: Colors.black54)),
@@ -87,8 +102,8 @@ class CreateAccount extends StatelessWidget {
                 ),
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width*0.7,
-                  height: 100,
+                  width: MediaQuery.of(context).size.width*0.75,
+                  height: 140,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
