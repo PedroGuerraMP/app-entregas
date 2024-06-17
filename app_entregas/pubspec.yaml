@@ -20,3 +20,4 @@ flutter:
   assets:
     - assets/img/prato-0.jpg
     - assets/img/prato-teste.jpg
+    - assets/img/login.webp
