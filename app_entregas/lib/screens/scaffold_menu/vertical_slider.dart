@@ -51,7 +51,7 @@ class VerticalSlider extends StatelessWidget {
                       ),
                       const Expanded(child: Text(""),),
                       Column(
-                        children: [Text(items[index].preco)],
+                        children: [Text(items[index].preco.toString())],
                       )
                     ],
                   )

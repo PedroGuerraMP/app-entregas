@@ -34,7 +34,7 @@ class DetailItemInfo extends StatelessWidget {
           alignment: Alignment.bottomRight,
           child: Text(
             style: const TextStyle(fontSize: 16, color: Colors.black87),
-            preco,
+            "R\$$preco",
           ),
         ),
       ],
