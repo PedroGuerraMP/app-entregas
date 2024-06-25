@@ -40,14 +40,17 @@ class VerticalSlider extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 10),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(items[index].nome),
-                          Text(items[index].descricao),
-                          const Text(""),
-                        ]
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width*0.5,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(items[index].nome),
+                            Text(items[index].descricao, overflow: TextOverflow.ellipsis,maxLines: 1,),
+                            const Text(""),
+                          ]
+                        ),
                       ),
                       const Expanded(child: Text(""),),
                       Column(
