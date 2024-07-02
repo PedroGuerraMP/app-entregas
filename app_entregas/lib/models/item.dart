@@ -1,9 +1,12 @@
+import 'package:app_entregas/models/adicional.dart';
+
 class Item {
 
   final String nome;
   final String descricao;
-  final String preco;
+  final double preco;
   final String categoria;
+  final List<Adicional> adicionais;
 
-  const Item(this.nome, this.descricao, this.preco, this.categoria);  
+  const Item(this.nome, this.descricao, this.preco, this.categoria, this.adicionais);  
 }

@@ -1,4 +1,6 @@
 import 'package:app_entregas/screens/cart_detail/cart_detail.dart';
+import 'package:app_entregas/screens/auth/login.dart';
+import 'package:app_entregas/screens/auth/create_account.dart';
 import 'package:app_entregas/screens/scaffold_menu/scaffold_menu.dart';
 import 'package:app_entregas/screens/item_detail/item_detail.dart';
 
@@ -21,7 +23,19 @@ class _MainMenuState extends State<MainApp> {
 @override
   void initState() {
     super.initState();
-    setStateScaffoldMenu();
+    setStateLogin();
+  }
+
+  void setStateLogin(){
+    setState(() {
+      activeScreen = Login(setStateScaffoldMenu, setStateCreateAccount);
+    });
+  }
+
+  void setStateCreateAccount(){
+    setState(() {
+      activeScreen = CreateAccount(setStateScaffoldMenu, setStateLogin);
+    });
   }
 
   void setStateScaffoldMenu(){

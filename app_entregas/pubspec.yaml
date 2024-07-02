@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  scrollable_positioned_list: ^0.3.8
 
 dev_dependencies:
   flutter_test:
@@ -20,3 +21,4 @@ flutter:
   assets:
     - assets/img/prato-0.jpg
     - assets/img/prato-teste.jpg
+    - assets/img/login.webp
