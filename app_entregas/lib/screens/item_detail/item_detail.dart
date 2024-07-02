@@ -9,6 +9,8 @@ import 'package:app_entregas/screens/item_detail/detail_button_row.dart';
 import 'package:app_entregas/data/items.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+
 
 import '../../models/adicional.dart';
 
@@ -29,9 +31,12 @@ class _ItemDetailState extends State<ItemDetail>{
   final TextEditingController _controllerPreco = TextEditingController(text: "1.00");
   late List<(String, AdicionalItem)> listaAdicionalItem;
   late List<(String, TextEditingController)> listaAdicionalController;
+  final ItemScrollController itemScrollController = ItemScrollController();
+  bool isValid = true;
 
   @override
   void initState() {
+    isValid = !widget.item.adicionais.any((element) => element.eObrigatorio);
     listaAdicionalController = [];
     loadListaAdicionalItem();
     for (var element in listaAdicionalItem) {
@@ -51,7 +56,7 @@ class _ItemDetailState extends State<ItemDetail>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: DetailButtonRow(widget.redirectToCartDetail),
+      bottomNavigationBar: DetailButtonRow(widget.redirectToCartDetail, itemScrollController, isValid),
       resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: ConstrainedBox(
@@ -72,7 +77,7 @@ class _ItemDetailState extends State<ItemDetail>{
                 SizedBox(
                   width: MediaQuery.of(context).size.width*0.9,
                   height: 200,
-                  child: AdicionalRow(widget.item, listaAdicionalItem, listaAdicionalController),
+                  child: AdicionalRow(widget.item, listaAdicionalItem, listaAdicionalController, itemScrollController, setListValid ),
                 ),
                 const SizedBox(height: 10,),
               ]
@@ -92,34 +97,11 @@ class _ItemDetailState extends State<ItemDetail>{
       }
     }
   }
-    
-  void increment(String key, bool positive) {
-    int indexLista = listaAdicionalController.indexWhere((element) => element.$1 == key);
 
-    if (int.tryParse(listaAdicionalController[indexLista].$2.value.text)! > 0) {
-      var newValue = int.parse(listaAdicionalController[indexLista].$2.value.text);
-      positive ? newValue++ : newValue--;
-
-      listaAdicionalController[indexLista].$2.value = TextEditingValue(text: newValue.toString());
-    }
-    else{
-      if(positive){
-        listaAdicionalController[indexLista].$2.value = const TextEditingValue(text: "1");
-      }
-    }
+  void setListValid(bool isListValid){
+    isValid = isListValid;
     setState(() {});
   }
-
-  // bool isAdicionalValido(String adicionalNome){
-  //   Adicional adicional = widget.item.adicionais
-  //                           .firstWhere((element) => element.nome == adicionalNome);
-
-  //   if(adicional.minimo > 0){
-
-  //   }
-
-
-  // }
 
   
   }

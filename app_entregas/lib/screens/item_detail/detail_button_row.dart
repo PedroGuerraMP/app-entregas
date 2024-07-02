@@ -1,7 +1,11 @@
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:flutter/material.dart';
 
 class DetailButtonRow extends StatefulWidget {
-  const DetailButtonRow(this.redirectToCartDetail, {super.key});
+  DetailButtonRow(this.redirectToCartDetail,this.itemScrollController, this.isValid, {super.key});
+
+  ItemScrollController itemScrollController;
+  bool isValid;
 
   @override
   State<StatefulWidget> createState() => _DetailButtonRowState();
@@ -11,37 +15,11 @@ class DetailButtonRow extends StatefulWidget {
 
 class _DetailButtonRowState extends State<DetailButtonRow> {
   final TextEditingController _controllerSelectedItems = TextEditingController(text: "1");
-  final TextEditingController _controllerBag = TextEditingController(text: "1");
-
+  
   @override
   void dispose() {
     _controllerSelectedItems.dispose();
-    _controllerBag.dispose();
     super.dispose();
-  }
-
-  void increment(bool positive) {
-    if (int.tryParse(_controllerSelectedItems.value.text)! > 0) {
-      var newValue = int.parse(_controllerSelectedItems.value.text);
-      positive ? newValue++ : newValue--;
-      _controllerSelectedItems.value = TextEditingValue(text: newValue.toString());
-    }
-    else{
-      _controllerSelectedItems.value = const TextEditingValue(text: "1");
-    }
-    setState(() {});
-  }
-
-  void add(){
-    if (int.tryParse(_controllerSelectedItems.value.text)! > 0) {
-      var bagValue = int.parse(_controllerBag.value.text);
-      var addedValues = int.parse(_controllerSelectedItems.value.text);
-      _controllerBag.value = TextEditingValue(text: (bagValue + addedValues).toString());
-    }
-    else {
-      _controllerSelectedItems.value = const TextEditingValue(text: "1");
-    }
-    setState(() {});
   }
 
   @override
@@ -116,5 +94,27 @@ class _DetailButtonRowState extends State<DetailButtonRow> {
         ],
       ),
     );
+  }
+
+    void increment(bool positive) {
+    if (int.tryParse(_controllerSelectedItems.value.text)! > 0) {
+      var newValue = int.parse(_controllerSelectedItems.value.text);
+      positive ? newValue++ : newValue--;
+      _controllerSelectedItems.value = TextEditingValue(text: newValue.toString());
+    }
+    else{
+      _controllerSelectedItems.value = const TextEditingValue(text: "1");
+    }
+    setState(() {});
+  }
+
+  void add(){
+    if(widget.isValid){
+      widget.redirectToCartDetail();
+    }
+    else{
+      widget.itemScrollController.scrollTo(index: 0, duration: Durations.short4);
+    }
+      
   }
 }

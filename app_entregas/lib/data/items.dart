@@ -15,7 +15,7 @@ import 'package:app_entregas/models/item.dart';
       const AdicionalItem("Parborizado", 1.00),
       const AdicionalItem("Integral", 2.00),
     ]),
-    Adicional(true, "Salada", 0, 4, [
+    Adicional(false, "Salada", 0, 4, [
       const AdicionalItem("Alface", 0.00),
       const AdicionalItem("Tomate", 0.00),
       const AdicionalItem("Cenoura", 1.00),

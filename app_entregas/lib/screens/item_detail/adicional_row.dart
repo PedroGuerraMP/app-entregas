@@ -6,12 +6,13 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 
 class AdicionalRow extends StatefulWidget {
-  const AdicionalRow(this.item, this.listaAdicionalItem, this.listaAdicionalController, this.itemScrollController, {super.key});
+  const AdicionalRow(this.item, this.listaAdicionalItem, this.listaAdicionalController, this.itemScrollController, this.setListValid, {super.key});
 
   final ItemScrollController itemScrollController;
   final Item item;
   final List<(String, AdicionalItem)> listaAdicionalItem;
   final List<(String, TextEditingController)> listaAdicionalController;
+  final Function setListValid;
 
 
   @override
@@ -93,10 +94,11 @@ class _AdicionalRowState extends State<AdicionalRow>{
         widget.listaAdicionalController[indexLista].$2.value = const TextEditingValue(text: "1");
       }
     }
+    validateList();
     setState(() {});
   }
   
-  adicionalIsValid(String nomeAdicional){
+  bool adicionalIsValid(String nomeAdicional){
     int quantidade = 0;
     Adicional adicional = widget.item.adicionais
                             .firstWhere((element) => element.nome == nomeAdicional);
@@ -118,4 +120,17 @@ class _AdicionalRowState extends State<AdicionalRow>{
       return true;
     }
   }
+
+  void validateList() {
+    bool isValid = true;
+    for (var element in widget.item.adicionais) {
+      if(!adicionalIsValid(element.nome)){
+        isValid = false;
+        break;
+      }
+    }
+  
+    widget.setListValid(isValid);
+  }
+
 }
