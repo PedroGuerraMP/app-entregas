@@ -1,15 +1,20 @@
 
+import 'package:app_entregas/data/pedidos.dart';
 import 'package:app_entregas/models/item.dart';
+import 'package:app_entregas/models/pedido.dart';
+import 'package:app_entregas/models/pedido_item.dart';
 import 'package:app_entregas/screens/cart_detail/cart_vertical_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:app_entregas/data/items.dart';
 
 
 class CartDetail extends StatefulWidget {
-  const CartDetail(this.redirectBack, { super.key });
+  CartDetail(this.redirectBack, { super.key });
+  
+  late List<(String, TextEditingController)> listaPedidoItemsControllers;
   
   final void Function() redirectBack;
-  final List<Item> listaItemsSelecao = listaItems;
+  final Pedido pedido = pedidoExemplo;
 
   @override
   State<CartDetail> createState() => _CartDetailState();
@@ -17,6 +22,15 @@ class CartDetail extends StatefulWidget {
 
 class _CartDetailState extends State<CartDetail> with SingleTickerProviderStateMixin {
   
+    @override 
+  void initState(){
+    widget.listaPedidoItemsControllers = [];
+    for (PedidoItem element in widget.pedido.items) {
+      widget.listaPedidoItemsControllers.add((element.item.nome, TextEditingController(text: "${element.quantidade}")));
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +89,7 @@ class _CartDetailState extends State<CartDetail> with SingleTickerProviderStateM
           ),
           SizedBox(
             height: 500,
-            child: CartVerticalSlider(widget.listaItemsSelecao, widget.redirectBack),
+            child: CartVerticalSlider(widget.pedido, widget.redirectBack, widget.listaPedidoItemsControllers),
           ),
         ],
       ),
