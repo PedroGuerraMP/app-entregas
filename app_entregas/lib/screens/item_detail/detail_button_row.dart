@@ -98,10 +98,7 @@ class _DetailButtonRowState extends State<DetailButtonRow> {
           ),
           Flexible(
             flex: 12,
-            child: Stack(
-              alignment: Alignment.topRight,
-              children: [
-                IconButton(
+            child: IconButton(
                   style: ButtonStyle(
                       backgroundColor:
                           const MaterialStatePropertyAll(Colors.purple),
@@ -114,17 +111,7 @@ class _DetailButtonRowState extends State<DetailButtonRow> {
                   ),
                   onPressed: () => {widget.redirectToCartDetail()},
                 ),
-                Card(
-                  color: Colors.redAccent,
-                  shape: const CircleBorder(),
-                  elevation: 0,
-                  child: Text(
-                    _controllerBag.text,
-                    style: const TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ),
-              ],
-            )
+               
           )
         ],
       ),

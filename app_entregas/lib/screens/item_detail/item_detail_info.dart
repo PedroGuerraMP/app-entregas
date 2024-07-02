@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DetailItemInfo extends StatelessWidget {
-  DetailItemInfo(this.titulo, this.descricao, this.preco, {super.key});
+  DetailItemInfo(this.titulo, this.descricao, this._controllerPreco, {super.key});
 
+  final TextEditingController _controllerPreco;
   String titulo, descricao, preco = "";
 
   @override
@@ -32,9 +33,14 @@ class DetailItemInfo extends StatelessWidget {
         const SizedBox(height: 10,),
         Align(
           alignment: Alignment.bottomRight,
-          child: Text(
-            style: const TextStyle(fontSize: 16, color: Colors.black87),
-            "R\$$preco",
+          child: SizedBox(
+            width: 40,
+              child: TextField(
+              style: const TextStyle(fontSize: 16, color: Colors.black87),
+              decoration: const InputDecoration(border: InputBorder.none),
+              readOnly: true,
+              controller: _controllerPreco,
+            ),
           ),
         ),
       ],
