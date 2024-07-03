@@ -52,7 +52,7 @@ class _MainMenuState extends State<MainApp> {
 
   void setStateCartDetail(){
     setState(() {
-      activeScreen = CartDetail();
+      activeScreen = CartDetail(setStateItemDetail);
     });
   }
 

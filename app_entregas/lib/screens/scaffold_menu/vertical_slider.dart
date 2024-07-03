@@ -34,7 +34,7 @@ class VerticalSlider extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       ClipRRect(
-                        borderRadius: BorderRadius.circular(10), // Image border
+                        borderRadius: BorderRadius.circular(10), 
                         child: SizedBox.fromSize(
                           child: Image.asset( height: 60, 'assets/img/prato-0.jpg', ),
                         ),
