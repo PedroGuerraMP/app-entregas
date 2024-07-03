@@ -57,7 +57,7 @@ final Pedido pedidoExemplo = Pedido(01, "Incompleto", 0, [
     ]
   ),
   PedidoItem(
-    Item("Arroz com Feijao e carne", "Arroz com Feijão e Carne. Feijão sempre é o carioca.", 10.00, "Janta",
+    Item("Arroz", "Arroz", 10.00, "Janta",
       [
         Adicional(true, "Carne", 1, 0, [
           const AdicionalItem("Frango", 0.00),

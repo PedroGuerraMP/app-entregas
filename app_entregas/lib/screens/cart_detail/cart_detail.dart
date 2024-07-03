@@ -80,7 +80,7 @@ class _CartDetailState extends State<CartDetail> with SingleTickerProviderStateM
                   width:150,
                   child: Text(
                     textAlign: TextAlign.center,
-                    "Pedir"
+                    "Confirmar"
                     ),
                 ),
                 onPressed: (){}, 
