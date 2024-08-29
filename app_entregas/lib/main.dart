@@ -3,6 +3,7 @@ import 'package:app_entregas/screens/auth/login.dart';
 import 'package:app_entregas/screens/auth/create_account.dart';
 import 'package:app_entregas/screens/scaffold_menu/scaffold_menu.dart';
 import 'package:app_entregas/screens/item_detail/item_detail.dart';
+import 'package:app_entregas/screens/confirm_data/confirm_data.dart';
 
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class _MainMenuState extends State<MainApp> {
 @override
   void initState() {
     super.initState();
-    setStateLogin();
+    setStateConfirmData();
   }
 
   void setStateLogin(){
@@ -52,7 +53,13 @@ class _MainMenuState extends State<MainApp> {
 
   void setStateCartDetail(){
     setState(() {
-      activeScreen = CartDetail(setStateItemDetail);
+      activeScreen = CartDetail(setStateItemDetail, setStateConfirmData);
+    });
+  }
+
+  void setStateConfirmData(){
+    setState(() {
+      activeScreen = ConfirmData(setStateCartDetail);
     });
   }
 
