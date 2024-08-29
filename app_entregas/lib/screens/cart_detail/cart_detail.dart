@@ -1,19 +1,18 @@
 
 import 'package:app_entregas/data/pedidos.dart';
-import 'package:app_entregas/models/item.dart';
 import 'package:app_entregas/models/pedido.dart';
 import 'package:app_entregas/models/pedido_item.dart';
 import 'package:app_entregas/screens/cart_detail/cart_vertical_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:app_entregas/data/items.dart';
 
 
 class CartDetail extends StatefulWidget {
-  CartDetail(this.redirectBack, { super.key });
+  CartDetail(this.redirectBack, this.toConfirmData, { super.key });
   
   late List<(String, TextEditingController)> listaPedidoItemsControllers;
   
   final void Function() redirectBack;
+  final void Function() toConfirmData;
   final Pedido pedido = pedidoExemplo;
 
   @override
@@ -83,7 +82,7 @@ class _CartDetailState extends State<CartDetail> with SingleTickerProviderStateM
                     "Confirmar"
                     ),
                 ),
-                onPressed: (){}, 
+                onPressed: (){widget.toConfirmData();}, 
               ), 
               ],
           ),
