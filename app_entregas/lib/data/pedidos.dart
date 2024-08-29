@@ -1,4 +1,3 @@
-import 'package:app_entregas/data/items.dart';
 import 'package:app_entregas/models/adicional.dart';
 import 'package:app_entregas/models/adicional_item.dart';
 import 'package:app_entregas/models/item.dart';

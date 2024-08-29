@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:app_entregas/models/adicional_item.dart';
 import 'package:app_entregas/models/item.dart';
 import 'package:app_entregas/screens/item_detail/adicional_row.dart';
@@ -8,11 +6,8 @@ import 'package:app_entregas/screens/item_detail/item_image_stack.dart';
 import 'package:app_entregas/screens/item_detail/detail_button_row.dart';
 import 'package:app_entregas/data/items.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-
-import '../../models/adicional.dart';
 
 class ItemDetail extends StatefulWidget {
   ItemDetail(this.redirectToScaffoldMenu,this.redirectToCartDetail, {super.key});
